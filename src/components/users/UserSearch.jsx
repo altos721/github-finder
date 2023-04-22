@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import GithubContext from '../../context/github/GithubContext';
 import AlertContext from '../../context/alert/AlertContext';
 
@@ -9,6 +9,11 @@ function UserSearch() {
   const { setAlert } = useContext(AlertContext);
 
   const handleChange = (e) => setText(e.target.value);
+
+  // Search when website first loaded
+  useEffect(() => {
+    searchUsers('brad');
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
